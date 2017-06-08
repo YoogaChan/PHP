@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Php基础知识1</title>
+</head>
+<body>
+
+ <?php
+     echo "<h3> php中两种基本的输出方式</h3>";
+     $a=123; //定义php变量
+     echo $a;//输出123
+     echo "<br/>"; //输出换行
+     print($a);
+     echo "<br/>";
+     echo "<p>时有微凉不是风</p>";
+     echo "<div id='main'></div>";
+ ?>
+<hr/>
+
+<?php
+   echo "<h3>php标记2 输出语句 echo( “hello”) / echo “hello”/print（）</h3>";
+             //echo 输出速度比print快
+             //echo 可以输出一个或多个字符串 print 一次只能输出一个字符串
+   echo ("hello"); //输出语句
+   echo "<br/>";
+   echo "hello";//输出语句
+   echo "<br/>";
+   print ("hello");//输出语句
+   echo "<br/>";
+      //单行注释
+      /*多行注释*/
+ ?>
+<hr/>
+
+<?php
+ echo "<h3>PHP变量定义</h3>";
+$a="hello";
+echo $a;
+echo "<br/>";
+print($a);
+echo "<br/>";
+print $a;
+echo "<br/>";
+
+?>
+<hr/>
+<!--php基本数据类型-->
+
+<!--String integar（整形） Boolean Null float（浮点） Array Object-->
+
+
+<?php
+echo "<h3>var_dump() 对String 字符串处理（输出变量的数据类型和值）</h3>";
+$str="hello";
+var_dump($str);//输出变量的数据类型和值     // string(5) "hello"
+echo "<br/>";
+?>
+<hr/>
+
+<?php
+echo "<h3>echo输出语句，对双引号内内容可以解析,单引号内内容不可以解析</h3>";
+$str_1="hello";
+$str_2="world";
+
+echo "$str_1";  //双引号内可以解析   //hello
+echo "<br/>";
+echo '$str_2';  //单引号内不可以解析  //$str_2
+?>
+<hr/>
+
+<?php
+ echo "<h3>. 连接符</h3>";
+$str_1="hello";
+$str_2="连接符";
+
+echo "这是php的".$str_2;
+echo "<br/>";
+?>
+<hr/>
+<?php
+echo "<h3>整型</h3>";
+$int=10;
+$x=100;
+var_dump($int);
+echo "<br/>";
+?>
+<hr/>
+
+<?php
+echo "<h3>浮点型</h3>";
+$flo=10.123;
+var_dump($flo);
+echo "<br/>";
+$flo_2=2.4e3;
+var_dump($flo_2);
+echo "<br/>";
+?>
+<hr/>
+
+<?php
+echo "<h3>Boolean型 true false</h3>";
+$true_1=true;
+$true_2=false;
+var_dump($true_1);
+echo "<br/>";
+?>
+<hr/>
+
+<?php
+echo "<h3>数据复合类型 Array object</h3>";
+$arr_1=array("one","two","three"); //数值数组
+echo $arr_1[1]; //访问数组项
+echo "<br/>";
+$arr_2=array(); //数值数组
+$arr_2[0]="one";
+$arr_2[1]="two";
+$arr_2[2]="three";
+
+$arr_3=[1,2,3,4,5,6]; //php5.4之后才支持
+echo $arr_3[0]; //访问数组项
+echo "<br/>";
+
+for ($i=0;$i<count($arr_1);$i++){
+    echo $arr_1[$i]."<br/>"; //访问数组
+}
+?>
+<hr/>
+
+<?php
+echo "<h3>php定义关联数组 键=>值</h3>";
+$age_1=array("name"=>"zhangsan","age"=>100,"job"=>"程序员");
+
+echo $age_1["name"]."<br/>";
+echo $age_1["age"]."<br/>";
+echo $age_1["job"]."<br/>";
+echo "<hr/>";
+
+$age_2=array();
+$age_2["name"]="zhangsan";
+$age_2["age"]=100;
+$age_2["job"]="程序员";
+
+
+echo "<h3>遍历关联数组 foreach()</h3>";
+foreach ($arr_1 as $key=>$value ){
+    echo "关联数组的键"."".$key;
+    echo "<br/>";
+    echo "关联数组的值"."".$value;
+    echo "<br/>";
+}
+echo "<hr/>";
+echo "<h2>php中的数据转换,在变量前加上用括号起来的类型名称即可</h2>";
+//php中的数据转换  js中的patseInt()  patseFloat() Boolean() Number()
+//String integet Boolean Null(空值) float Array Object
+//在变量前加上用括号起来的类型名称即可
+echo "<h3>字符串转换整型</h3>";
+$num="12.5obj";
+$int=(integer)$num;
+echo $int;//12
+echo "<hr/>";
+
+echo "<h3>浮点型转换整型</h3>";
+$flo=12.5;
+$int=(integer)$flo;
+echo $int;//12
+echo "<hr/>";
+
+echo "<h3>Boolean型转换整型</h3>";
+$str="hello";
+$boolean=(boolean)$str;
+echo $boolean;   //1
+echo "<hr/>";
+
+
+//php检查数据类型的函数
+
+//is_bool(var)   检查变量是否为Boolean类型 如果是为true 如果不是为false
+//is_string(var) 检查变量是否为string类型  如果是为true 如果不是为false
+//is_float(var)  检查变量是否为float类型   如果是为true 如果不是为false
+//is_double(var) 检查变量是否为double(双精度值)类型 如果是为true 如果不是为false
+//is_integer(var)/is_int(var)  检查变量是否为integer类型 如果是为true 如果不是为false
+//is_null()  检查变量是否为null类型 如果是为true 如果不是为false
+//is_array(var)  检查变量是否为array类型 如果是为true 如果不是为false
+//is_object(var)  检查变量是否为object类型 如果是为true 如果不是为false
+//is_numberic()  检查变量是否为数字或者数字组成的字符串 如果是为true 如果不是为false
+
+echo "<h3>is_numberic() 检查变量是否为数字或者数字组成的字符串 如果是为true 如果不是为false</h3>";
+$numeric=123;
+$numeric="123456";
+if (is_numeric($numeric)){
+    echo "这是一个数字";
+}else{
+    echo "这不是一个数字";
+}
+echo "<hr/>";
+
+//php 常量的定义  常量的值是不能改变 使用define（）定义 常量一般定义为大写字母的形式
+echo "<h3>php 常量的定义</h3>";
+define("NAME","php用户名");//第一个参数是常量的名称，第二个参数是常量的值，
+echo NAME;   //php用户名
+echo "<br/>";
+//访问常量时不区分大小写
+define("NAME","php用户名（输出常量名不区分大小写）",true);//第一个参数是常量的名称，第二个参数是常量的值，
+echo name;   //php用户名
+echo "<hr/>";
+
+echo "<h3>php 函数定义</h3>";
+//php 函数定义
+
+function run($a=1){
+    echo "这是php函数".$a;
+}
+run(20);
+echo "<hr/>";
+
+function add($x,$y){
+    return $x*$y;
+}
+echo add(20,10);
+echo "<hr/>";
+
+?>
+
+<?php
+echo "<h3>php变量的作用域（全局变量、局部变量）</h3>";
+//php变量的作用域
+//1.全局变量（定义在函数外部的变量 作用范围：在函数以外的所有地方都可以访问）
+//2.局部变量（函数的参数也是局部变量。定义在函数内部的变量 作用范围：只能在函数内部访问）
+//3.静态变量（定义在函数内部的变量，使用static关键字修饰的变量  作用：可以使局部变量保存在内存中）
+$a=100; //全局变量
+function runs($b=1){
+    global $a;//使用global关键字声明 可访问全局变量
+    echo "这是局部变量".$b;
+    echo "<br/>";
+    echo "这是全局变量".$a;
+}
+runs();
+//echo "在外输出的局部变量".$b;
+//echo "在外输出的全局变量".$b;
+
+?>
+<hr/>
+
+<?php
+ echo "<h3>超全局变量(php 把所有的全局变量存储在一个名为 $ GLOBALS[index]的数组，可以在脚本中任何地方使用)</h3>";
+$a=100;
+$b=200;
+function runn($b=1){ //php 把所有的全局变量存储在一个名为$GLOBALS[index]的数组，可以在脚本中任何地方使用
+    $GLOBALS["a"]=100;
+    $GLOBALS["c"]=200;
+    $GLOBALS["d"]="overwatch";
+    $GLOBALS["z"]= $GLOBALS["a"]+ $GLOBALS["a"];
+}
+runn();
+echo $GLOBALS["z"];
+
+?>
+<hr/>
+
+<?php
+echo "<h3>静态变量（定义在函数内部的变量，使用static关键字修饰的变量  作用：可以使局部变量保存在内存中）</h3>";
+//static 关键字
+function running(){
+    static $a=1; //作用 使局部变量保存在内存中
+    echo $a;
+    $a++;
+}
+running();
+echo "<br/>";
+running();
+echo "<br/>";
+running();
+?>
+<hr/>
+
+<?php
+echo "<h4>php中按值传参</h4>";
+
+function runo($a){
+    echo $a=$a+10;//20
+    echo "<br/>";
+}
+
+$a=10;
+runo($a);
+echo $a;//10
+
+?>
+<hr/>
+
+<?php
+echo "<h4>php中按引用传参</h4>";
+//按引用传参就是将实参的内存地址 传递到形参中,在函数内部的所有的操作都会影响到实参的值
+//引用传参的方式就是在传值时在原来基础上加  "&" 符号
+function runss(&$a){
+    echo  $a=$a+10;
+    echo "<br/>";
+}
+$a=10;
+runss($a);
+echo $a;//20
+
+?>
+<hr/>
+
+<?php
+echo "<h4>php中默认参数</h4>";
+
+function printMe($param = NULL) //若无传参，则将默认参数传入
+{
+    print $param;
+}
+printMe("This is test");//默认参数为 字符串 “This is test”
+printMe();
+
+?>
+
+<hr/>
+
+<?php
+echo "<h4>php判断语句</h4>";
+
+$a=100;
+if ($a>=90){
+    echo "成绩优秀";
+}else if($a>=60) {
+    echo "成绩合格";
+}else{
+    echo  "成绩不及格";
+}
+
+?>
+
+<hr/>
+
+<?php
+echo "<h4>php switch语句</h4>";
+$a="overwatch";
+switch ($a)
+{
+case "overwatch";
+    echo "我喜欢玩守望先锋";
+    break;
+case "palagon";
+     echo "我喜欢玩虚幻争霸";
+     break;
+case "palding";
+     echo "我喜欢玩枪火游侠";
+     break;
+    default:
+    echo "我什么游戏都不喜欢玩";
+}
+?>
+<hr/>
+
+<?php
+echo "<h4>php do..while语句（至少执行一次）</h4>";
+
+$i=1;
+do // do{ 要执行的代码}
+{
+    $i++;
+    echo "输出的数字是： " . $i . "<br>";
+}
+while ($i<=5); //while（条件）
+
+
+
+?>
+<hr/>
+<?php
+echo "<h4>php for 循环语句</h4>";
+
+for($i=0;$i<5;$i++){
+    echo "输出的数字是:".$i."<br>";
+}
+
+?>
+<hr/>
+
+<?php
+echo "<h3>php 字符串 </h3>";
+echo "<h4>字符串长度函数  strlen() </h4>";
+$str="overwatch";
+echo "这个字符串的长度是：".strlen($str);
+
+echo "<h4>字符串strpos()函数  指定字符在字符串中首次出现的位置,区分大小写（相当于js中的indexOf）</h4>";
+echo strpos("hello","e");
+echo "</br>";
+echo stripos("hello","E");//不区分大小写
+echo "</hr>";
+
+echo "<h4>字符串strrpos()函数  指定字符在字符串中最后一次出现的位置,区分大小写（相当于js中的LastindexOf）</h4>";
+echo strrpos("hello","l");
+echo "</br>";
+echo strripos("hello","L");//不区分大小写
+echo "</hr>";
+
+echo "<h3> explode() 相当于js 中 split（）把字符串分割为数组项 </h3>";
+
+$url="hero.is.never.die";
+print_r(explode(".",$url));
+
+echo "<h3> implode() 相当于js 中 join（）把数组项转换为字符串</h3>";
+$arr=["one","two","three"];
+echo implode("",$arr);//无
+echo "</br>";
+echo implode(" ",$arr);//空格
+echo "</br>";
+echo implode(",",$arr);//,
+echo "</br>";
+echo implode("+",$arr);//+
+echo "</br>";
+var_dump(implode("",$arr));
+
+?>
+<hr/>
+
+<?php
+echo "<h3>php 数组 </h3>";
+
+?>
+
+</body>
+</html>
